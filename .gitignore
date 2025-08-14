@@ -39,3 +39,19 @@
 
 # debug information files
 *.dwo
+
+# main sln should not be committed as it get regenerated all the time
+*.sln
+
+bin/
+obj/
+Intermediate/
+.vs/
+.cache/
+
+*.deps.json
+*.runtimeconfig.json
+
+*.log
+
+compile_commands.json
