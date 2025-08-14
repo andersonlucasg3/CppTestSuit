@@ -10,7 +10,7 @@ public class TestSuitLibModule : AModuleDefinition
 
     public override string SourcesRoot => "Sources";
 
-    protected override void Configure(AProjectDefinition InOwnerProject)
+    protected override void Configure()
     {
         
     }

@@ -20,7 +20,7 @@ public:
     static TTest* RegisterTestClass(const char* TestClassName)
     {
         TTest* Test = new TTest();
-        Test->SetTestName(TestClassName);
+        Test->_testName = TestClassName;
         AllTests.push_back(Test);
         return Test;
     }

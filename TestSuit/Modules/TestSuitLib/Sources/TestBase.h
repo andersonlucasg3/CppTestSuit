@@ -4,9 +4,10 @@
 
 class CTestBase
 {
-    CAssert* _assert;
-    
     const char* _testName;
+    
+protected:
+    CAssert* Assert;
 
 public:
     virtual ~CTestBase() = default;

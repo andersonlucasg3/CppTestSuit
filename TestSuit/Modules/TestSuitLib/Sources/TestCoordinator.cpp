@@ -20,7 +20,7 @@ void CTestCoordinator::Run()
 
         CLogger::Log("TestCoordinator: Running test cases for {}", Test->_testName);
 
-        Test->_assert = &Assert;
+        Test->Assert = &Assert;
 
         Test->TestCase();
 

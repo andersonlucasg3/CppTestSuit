@@ -10,7 +10,7 @@ public class TestSuitRunnerModule : AModuleDefinition
 
     public override string SourcesRoot => "Sources";
 
-    protected override void Configure(AProjectDefinition InOwnerProject)
+    protected override void Configure()
     {
         AddDependencyModuleNames(
             "TestSuitLib"

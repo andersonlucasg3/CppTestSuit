@@ -99,10 +99,15 @@ public:
     friend class CTestCoordinator;
 };
 
-#define ASSERT_CONTEXT(expr) CTestAssertInfo(this, __FILE__, __FUNCTION__, __LINE__, ##expr)
+#define LITERAL(a) a
+#define TO_STR(a) #a
+#define WANTSTR(a) TO_STR(a)
+#define ASSERT_CONTEXT(l, symbol, r) { __FILE__, __FUNCTION__, __LINE__, ASSERT_CONCAT_3(l, symbol, r) }
+#define ASSERT_CONCAT_2(a, b) a b
+#define ASSERT_CONCAT_3(a, s, b) WANTSTR(ASSERT_CONCAT_2(ASSERT_CONCAT_2(a, s), b))
 
-#define ASSERT_EQUAL(l, r)                  _assert->Equal(l, r, ASSERT_CONTEXT(##l == ##r))
-#define ASSERT_GREATER(l, r)                _assert->Greater(l, r, false, ASSERT_CONTEXT(##l > ##r))
-#define ASSERT_GREATER_EQUAL(l, r)          _assert->Greater(l, r, true, ASSERT_CONTEXT(##l >= ##r))
-#define ASSERT_LESSER(l, r)                 _assert->Lesser(l, r, false, ASSERT_CONTEXT(##l < ##r))
-#define ASSERT_LESSER_EQUAL(l, r)           _assert->Lesser(l, r, true, ASSERT_CONTEXT(##l < ##r))
+#define ASSERT_EQUAL(l, r)                  Assert->Equal(LITERAL(l), LITERAL(r), ASSERT_CONTEXT(l, ==, r))
+#define ASSERT_GREATER(l, r)                Assert->Greater(LITERAL(l), LITERAL(r), false, ASSERT_CONTEXT(l, >, r))
+#define ASSERT_GREATER_EQUAL(l, r)          Assert->Greater(LITERAL(l), LITERAL(r), true, ASSERT_CONTEXT(l, >=, r))
+#define ASSERT_LESSER(l, r)                 Assert->Lesser(LITERAL(l), LITERAL(r), false, ASSERT_CONTEXT(l, <, r))
+#define ASSERT_LESSER_EQUAL(l, r)           Assert->Lesser(LITERAL(l), LITERAL(r), true, ASSERT_CONTEXT(l, <=, r))
