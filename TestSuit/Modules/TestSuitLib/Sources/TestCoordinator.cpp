@@ -8,7 +8,7 @@ std::vector<CTestBase*> CTestCoordinator::AllTests;
 bool CTestCoordinator::Run()
 {
     // CLogger::InitializeLogFile("Tests.log");
-    CLogger::Log("Initializing TestCoordinator");
+    CTestLogger::Log("Initializing TestCoordinator");
 
     bool bHadAnyFailures = false;
 
@@ -18,7 +18,7 @@ bool CTestCoordinator::Run()
 
         CAssert Assert;
 
-        CLogger::Log("TestCoordinator: Running test cases for {}", Test->_testName);
+        CTestLogger::Log("TestCoordinator: Running test cases for {}", Test->_testName);
 
         Test->Assert = &Assert;
 
@@ -30,18 +30,18 @@ bool CTestCoordinator::Run()
 
             for (const CTestAssertInfo& Info : Assert._failedTestCases)
             {
-                CLogger::Error("{} - {} - {}:{}", Info.Expression, Info.FunctionName, Info.FileName, Info.LineNumber);
+                CTestLogger::Error("{} - {} - {}:{}", Info.Expression, Info.FunctionName, Info.FileName, Info.LineNumber);
             }
         }
     }
 
     if (bHadAnyFailures)
     {
-        CLogger::Log("Tests finished with errors.");
+        CTestLogger::Log("Tests finished with errors.");
     }
     else
     {
-	    CLogger::Log("Tests finished with no errors.");
+	    CTestLogger::Log("Tests finished with no errors.");
     }
 
     // delete all tests

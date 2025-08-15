@@ -3,7 +3,7 @@
 #include <format>
 #include <iostream>
 
-class CLogger
+class CTestLogger
 {
     template<typename ... TArgs>
     static std::string GetFormattedString(const char* Format, TArgs&& ... Args)
