@@ -11,6 +11,5 @@ public class TestSuitProject : AProjectDefinition
     protected override void Configure()
     {
         AddModule<TestSuitLibModule>();
-        AddModule<TestSuitRunnerModule>();
     }
 }

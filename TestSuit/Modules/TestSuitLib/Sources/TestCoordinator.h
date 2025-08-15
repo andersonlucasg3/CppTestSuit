@@ -13,7 +13,7 @@ class CTestCoordinator
     ~CTestCoordinator() = delete;
 
 public:
-    TESTSUITLIB_API static void Run();
+    TESTSUITLIB_API static bool Run();
     TESTSUITLIB_API static void Shutdown();
 
     template<typename TTest = CTestBase>

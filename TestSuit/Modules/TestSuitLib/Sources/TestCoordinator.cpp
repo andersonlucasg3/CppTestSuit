@@ -5,7 +5,7 @@
 
 std::vector<CTestBase*> CTestCoordinator::AllTests;
 
-void CTestCoordinator::Run()
+bool CTestCoordinator::Run()
 {
     // CLogger::InitializeLogFile("Tests.log");
     CLogger::Log("Initializing TestCoordinator");
@@ -43,12 +43,12 @@ void CTestCoordinator::Run()
     {
 	    CLogger::Log("Tests finished with no errors.");
     }
-}
 
-void CTestCoordinator::Shutdown()
-{
+    // delete all tests
     for (CTestBase* Test : AllTests) 
     {
         delete Test;
     }
+
+    return !bHadAnyFailures;
 }
