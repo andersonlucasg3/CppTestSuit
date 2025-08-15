@@ -7,7 +7,7 @@
 
 class CTestCoordinator
 {
-    static std::vector<CTestBase*> AllTests;
+    TESTSUITLIB_API static std::vector<CTestBase*> AllTests;
 
     CTestCoordinator() = delete;
     ~CTestCoordinator() = delete;

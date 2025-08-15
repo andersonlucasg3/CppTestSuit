@@ -14,12 +14,7 @@ struct CTestAssertInfo
 
     const std::string Expression;
 
-    CTestAssertInfo(
-        const std::string& InFileName, 
-        const std::string& InFunctionName,
-        const int InLineNumber,
-        const std::string InExpression
-    );
+    TESTSUITLIB_API CTestAssertInfo(const std::string& InFileName, const std::string& InFunctionName, const int InLineNumber, const std::string InExpression);
 };
 
 class CAssert
