@@ -48,6 +48,17 @@ public:
     }
 
     template<typename TLeft, typename TRight>
+    void NotEqual(TLeft InLeftValue, TRight InRightValue, const CTestAssertInfo& Info)
+    {
+        bool bResult = InLeftValue != InRightValue;
+
+        if (!bResult)
+        {
+            _failedTestCases.push_back(Info);
+        }
+    }
+
+    template<typename TLeft, typename TRight>
     void Greater(TLeft InLeftValue, TRight InRightValue, bool bAndEqual, const CTestAssertInfo& Info)
     {
         static_assert(IsANumber<TLeft, TRight>());
@@ -101,7 +112,10 @@ public:
 #define ASSERT_CONCAT_2(a, b) a b
 #define ASSERT_CONCAT_3(a, s, b) WANTSTR(ASSERT_CONCAT_2(ASSERT_CONCAT_2(a, s), b))
 
+#define ASSERT_TRUE(v)                      Assert->Equal(LITERAL(v), true, ASSERT_CONTEXT(v, ==, true))
+#define ASSERT_FALSE(v)                     Assert->Equal(LITERAL(v), false, ASSERT_CONTEXT(v, ==, false))
 #define ASSERT_EQUAL(l, r)                  Assert->Equal(LITERAL(l), LITERAL(r), ASSERT_CONTEXT(l, ==, r))
+#define ASSERT_NOT_EQUAL(l, r)              Assert->NotEqual(LITERAL(l), LITERAL(r), ASSERT_CONTEXT(l, !=, r))
 #define ASSERT_GREATER(l, r)                Assert->Greater(LITERAL(l), LITERAL(r), false, ASSERT_CONTEXT(l, >, r))
 #define ASSERT_GREATER_EQUAL(l, r)          Assert->Greater(LITERAL(l), LITERAL(r), true, ASSERT_CONTEXT(l, >=, r))
 #define ASSERT_LESSER(l, r)                 Assert->Lesser(LITERAL(l), LITERAL(r), false, ASSERT_CONTEXT(l, <, r))
