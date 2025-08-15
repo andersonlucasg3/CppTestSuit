@@ -8,8 +8,6 @@ public class TestSuitLibModule : AModuleDefinition
 
     public override string Name => "TestSuitLib";
 
-    public override string SourcesRoot => "Sources";
-
     protected override void Configure()
     {
         

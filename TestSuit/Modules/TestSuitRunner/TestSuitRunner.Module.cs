@@ -8,8 +8,6 @@ public class TestSuitRunnerModule : AModuleDefinition
 
     public override string Name => "TestSuitRunner";
 
-    public override string SourcesRoot => "Sources";
-
     protected override void Configure()
     {
         AddDependencyModuleNames(
