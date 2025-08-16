@@ -19,8 +19,6 @@ struct CTestAssertInfo
 
 class CAssert
 {
-    bool _bHadAnyErrors;
-
     std::vector<CTestAssertInfo> _failedTestCases;
 
     template<typename TLeft, typename TRight>
@@ -32,8 +30,10 @@ class CAssert
         return IsLeftTypeANumber && IsRightTypeANumber;
     }
 
+    bool HasAnyFailures() const;
+
 public:
-    CAssert();
+    CAssert() = default;
     ~CAssert() = default;
 
     template<typename TLeft, typename TRight>

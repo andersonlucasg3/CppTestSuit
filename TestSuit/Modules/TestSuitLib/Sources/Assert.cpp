@@ -13,8 +13,7 @@ CTestAssertInfo::CTestAssertInfo(
     //
 }
 
-CAssert::CAssert()
-:   _bHadAnyErrors(false)
+bool CAssert::HasAnyFailures() const
 {
-
+    return _failedTestCases.size() > 0;
 }

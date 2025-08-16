@@ -24,13 +24,15 @@ bool CTestCoordinator::Run()
 
         Test->TestCase();
 
-        if (Assert._bHadAnyErrors)
+        if (Assert.HasAnyFailures())
         {
             bHadAnyFailures = true;
 
             for (const CTestAssertInfo& Info : Assert._failedTestCases)
             {
-                CTestLogger::Error("{} - {} - {}:{}", Info.Expression, Info.FunctionName, Info.FileName, Info.LineNumber);
+                CTestLogger::Log("\n");
+                CTestLogger::Error("{} - {}:{}", Info.FunctionName, Info.FileName, Info.LineNumber);
+                CTestLogger::Log("\tExpression: {}\n", Info.Expression);
             }
         }
     }
